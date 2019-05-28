@@ -13,6 +13,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * Class ConsoleApplication
  * 28/05/2019
  *
+ *
+ * Inspired on https://www.opencodez.com/java/use-mongodb-atlas-with-spring-boot.htm
  * @author berto (alberto.soto@gmail.com)
  */
 @SpringBootApplication
