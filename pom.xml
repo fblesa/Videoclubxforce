@@ -45,6 +45,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-mongodb</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
         <!-- Enables Hot swap for statics
         https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/html/using-spring-boot.html#using-boot-devtools-->
         <dependency>

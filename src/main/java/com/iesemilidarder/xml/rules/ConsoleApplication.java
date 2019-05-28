@@ -1,7 +1,8 @@
 package com.iesemilidarder.xml.rules;
 
-import com.iesemilidarder.xml.rules.data.Customer;
-import com.iesemilidarder.xml.rules.service.CustomerRepository;
+import com.iesemilidarder.xml.rules.data.User;
+import com.iesemilidarder.xml.rules.repository.CustomRepository;
+import com.iesemilidarder.xml.rules.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -16,12 +17,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @SpringBootApplication
 public class ConsoleApplication implements CommandLineRunner {
-    private final CustomerRepository repository;
 
     @Autowired
-    public ConsoleApplication(CustomerRepository repository) {
-        this.repository = repository;
-    }
+    UserRepository repository;
+
+    @Autowired
+    CustomRepository crepo;
 
     public static void main(String[] args) {
         SpringApplication.run(ConsoleApplication.class, args);
@@ -29,31 +30,39 @@ public class ConsoleApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        deleteAll();
+        addSampleData();
+        listAll();
+        findFirst();
+        findByRegex();
+    }
 
+    public void deleteAll() {
+        System.out.println("Deleting all records..");
         repository.deleteAll();
+    }
 
-        // save a couple of customers
-        repository.save(new Customer("Alice", "Smith"));
-        repository.save(new Customer("Bob", "Smith"));
+    public void addSampleData() {
+        System.out.println("Adding sample data");
+        repository.save(new User("Jack Bauer", "New York", 11111d));
+        repository.save(new User("Harvey Spectre", "London", 22222d));
+        repository.save(new User("Mike Ross", "New Jersey", 333333d));
+        repository.save(new User("Louise Litt", "Kathmandu", 44444d));
+    }
 
-        // fetch all customers
-        System.out.println("Customers found with findAll():");
-        System.out.println("-------------------------------");
-        for (Customer customer : repository.findAll()) {
-            System.out.println(customer);
-        }
-        System.out.println();
+    public void listAll() {
+        System.out.println("Listing sample data");
+        repository.findAll().forEach(u -> System.out.println(u));
+    }
 
-        // fetch an individual customer
-        System.out.println("Customer found with findByFirstName('Alice'):");
-        System.out.println("--------------------------------");
-        System.out.println(repository.findByFirstName("Alice"));
+    public void findFirst() {
+        System.out.println("Finding first by Name");
+        User u = repository.findFirstByName("Louise Litt");
+        System.out.println(u);
+    }
 
-        System.out.println("Customers found with findByLastName('Smith'):");
-        System.out.println("--------------------------------");
-        for (Customer customer : repository.findByLastName("Smith")) {
-            System.out.println(customer);
-        }
-
+    public void findByRegex() {
+        System.out.println("Finding by Regex - All with address starting with ^New");
+        repository.findCustomByRegExAddress("^New").forEach(u -> System.out.println(u));
     }
 }
