@@ -41,10 +41,10 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-freemarker</artifactId>
         </dependency>
-       <!-- <dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-mongodb</artifactId>
-        </dependency>-->
+        </dependency>
         <!-- Enables Hot swap for statics
         https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/html/using-spring-boot.html#using-boot-devtools-->
         <dependency>

@@ -1,5 +1,10 @@
 package com.iesemilidarder.xml.rules;
 
+import com.iesemilidarder.xml.rules.data.Customer;
+import com.iesemilidarder.xml.rules.service.CustomerRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
@@ -10,8 +15,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author berto (alberto.soto@gmail.com)
  */
 @SpringBootApplication
-public class ConsoleApplication /*implements CommandLineRunner*/ {
-   /* private final CustomerRepository repository;
+public class ConsoleApplication implements CommandLineRunner {
+    private final CustomerRepository repository;
 
     @Autowired
     public ConsoleApplication(CustomerRepository repository) {
@@ -50,5 +55,5 @@ public class ConsoleApplication /*implements CommandLineRunner*/ {
             System.out.println(customer);
         }
 
-    }*/
+    }
 }

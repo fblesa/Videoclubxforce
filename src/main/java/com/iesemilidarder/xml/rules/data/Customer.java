@@ -1,5 +1,7 @@
 package com.iesemilidarder.xml.rules.data;
 
+import org.springframework.data.annotation.Id;
+
 /**
  * com.iesemilidarder.xml.rules.data
  * Class Customer
@@ -9,13 +11,14 @@ package com.iesemilidarder.xml.rules.data;
  */
 public class Customer {
 
-    //@Id
+    @Id
     public String id;
 
     public String firstName;
     public String lastName;
 
-    public Customer() {}
+    public Customer() {
+    }
 
     public Customer(String firstName, String lastName) {
         this.firstName = firstName;
